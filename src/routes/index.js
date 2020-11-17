@@ -34,6 +34,7 @@ import Modal from './UI/Modal';
 import CRUD from './Business/CRUD';
 import CRUDDetail from './Business/CRUD/routers/Detail';
 import Image from './UI/Image';
+import List from './List'
 
 /**
  * 主路由配置
@@ -92,6 +93,7 @@ const routesConfig = app => [
       Banner(app),
       LevelRoute(app),
       Image(),
+      List(app),
       NotFound()
     ]
   }

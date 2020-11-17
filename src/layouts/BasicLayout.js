@@ -245,17 +245,6 @@ export default class BasicLayout extends React.PureComponent {
               <TabsLayout childRoutes={childRoutes} location={location} />
             ) : (
               <Layout className="full-layout">
-                <Header>
-                  <TopBar
-                    expand={expandTopBar}
-                    toggleRightSide={this.toggleRightSide}
-                    collapsedRightSide={collapsedRightSide}
-                    onCollapse={this.onCollapseTopBar}
-                    currentMenu={currentMenu}
-                    location={location}
-                    theme={theme}
-                  />
-                </Header>
                 <Content style={{ overflow: 'hidden' }}>
                   <SwitchTransition>
                     <CSSTransition
