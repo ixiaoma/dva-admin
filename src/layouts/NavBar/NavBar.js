@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
-import Icon from '../Icon';
+import Icon from 'components/Icon';
 import { Popover, Badge, Avatar } from 'antd';
 import { router } from 'dva';
 import cx from 'classnames';
 import './style/index.less';
 import logoImg from 'assets/images/logo.png';
-import SearchBox from './SearchBox';
+// import SearchBox from './SearchBox';
 const { Link } = router;
 
 /**
@@ -52,27 +52,12 @@ class NavBar extends PureComponent {
     }
   }
 
-  onCloseSearchBox = () => {
-    this.setState({
-      openSearchBox: false
-    });
-  };
-
-  onOpenSearchBox = () => {
-    this.setState({
-      openSearchBox: true
-    });
-  };
-
   render() {
-    const { openSearchBox } = this.state;
     const {
       fixed,
       theme,
       onCollapseLeftSide,
       collapsed,
-      onExpandTopBar,
-      toggleSidebarHeader,
       user,
       isMobile
     } = this.props;
@@ -88,58 +73,22 @@ class NavBar extends PureComponent {
         <div className="navbar-branding">
           <Link className="navbar-brand" to="/">
             <img src={logoImg} alt="logo" />
-            <b>LANIF</b>
+            <b>DVA</b>
             Admin
           </Link>
           <span className="toggle_sidemenu_l" onClick={onCollapseLeftSide}>
             <Icon type="lines" />
           </span>
         </div>
-        <ul className="nav navbar-nav navbar-left clearfix">
-          {collapsed || isMobile ? null : (
-            <li>
-              <a className="sidebar-menu-toggle" onClick={toggleSidebarHeader}>
-                <Icon type="ruby" />
-              </a>
-            </li>
-          )}
-          <li>
-            <a onClick={onExpandTopBar}>
-              <Icon type="wand" />
-            </a>
-          </li>
-          {isMobile ? (
-            <li className="mini-search" onClick={this.onOpenSearchBox}>
-              <a>
-                <Icon type="search" antd />
-              </a>
-            </li>
-          ) : (
+        
+        <ul className="nav navbar-nav navbar-right clearfix">
+          {isMobile ? null : (
             <li onClick={this.toggleFullScreen}>
               <a className="request-fullscreen">
                 <Icon type="screen-full" />
               </a>
             </li>
           )}
-        </ul>
-        {isMobile ? null : (
-          <form className="navbar-form navbar-search clearfix">
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="全文检索"
-                onClick={this.onOpenSearchBox}
-              />
-            </div>
-          </form>
-        )}
-        <ul className="nav navbar-nav navbar-right clearfix">
-          <li>
-            <a href="https://github.com/LANIF-UI/dva-boot-admin">
-              <Icon type="GithubOutlined" antd />
-            </a>
-          </li>
           <li className="dropdown">
             <Popover
               placement="bottomRight"
@@ -171,7 +120,6 @@ class NavBar extends PureComponent {
             </Popover>
           </li>
         </ul>
-        <SearchBox visible={openSearchBox} onClose={this.onCloseSearchBox} />
       </header>
     );
   }

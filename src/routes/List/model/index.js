@@ -1,25 +1,26 @@
+import { getData } from '../service'
 export default {
   namespace:'list',
 
   state:{
-
+    pageData:{}
   },
 
   reducers: {
-    getMenuSuccess(state, { payload }) {
+    setPageData(state, { payload }) {
       return {
         ...state,
-        menu: payload,
-        flatMenu: getFlatMenu(payload),
+        pageData: payload
       };
     }
   },
 
   effects: {
     *getListData({ payload },{ call, put }){
+      const data = yield call(getData,payload)
       yield put({
         type:'setPageData',
-        payload:{}
+        payload:data
       })
     }
   }

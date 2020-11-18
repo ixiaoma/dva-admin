@@ -1,25 +1,16 @@
-/**
- * 来源
- * https://github.com/ant-design/ant-design-pro/blob/master/src/components/SiderMenu/SiderMenu.js
- */
 import React, { PureComponent } from 'react';
 import cx from 'classnames';
 import { Menu, Layout, Switch, Select, Drawer } from 'antd';
 import { router } from 'dva';
 import pathToRegexp from 'path-to-regexp';
-import Icon from '../Icon';
+import Icon from 'components/Icon';
 import isEqual from 'react-fast-compare';
 import logoImg from 'assets/images/logo.png';
 import './style/index.less';
 const { Link } = router;
-const Option = Select.Option;
 const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
-// Allow menu.js config icon as string or ReactNode
-//   icon: 'setting',
-//   icon: 'http://demo.com/icon.png',
-//   icon: <Icon type="setting" />,
 const getIcon = icon => {
   if (typeof icon === 'string' && icon.indexOf('http') === 0) {
     return <img src={icon} alt="icon" className={`sider-menu-item-img`} />;
@@ -184,7 +175,6 @@ class LeftSideBar extends PureComponent {
       leftCollapsedWidth,
       showHeader,
       menu,
-      user,
       isMobile
     } = this.props;
 
@@ -221,38 +211,6 @@ class LeftSideBar extends PureComponent {
         trigger={null}
       >
         <div className="sidebar-left-content">
-          <header className="sidebar-header">
-            <div className="userlogged clearfix">
-              <Icon type="woman" />
-              <div className="user-details">
-                <span>{user.name}</span>
-                <div className="dropdown">
-                  <Select
-                    size="small"
-                    defaultValue="online"
-                    dropdownClassName="sidebar-header-dropdown"
-                  >
-                    <Option value="online">
-                      <span className="user online" />
-                      在线
-                    </Option>
-                    <Option value="busy">
-                      <span className="user busy" />
-                      忙碌
-                    </Option>
-                    <Option value="invisible">
-                      <span className="user invisible" />
-                      隐身
-                    </Option>
-                    <Option value="offline">
-                      <span className="user offline" />
-                      离线
-                    </Option>
-                  </Select>
-                </div>
-              </div>
-            </div>
-          </header>
           <Menu
             onClick={this.handleClick}
             onOpenChange={this.handleOpenChange}

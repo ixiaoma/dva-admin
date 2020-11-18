@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect, router, routerRedux } from 'dva';
 import { Layout } from 'antd';
-import NavBar from 'components/NavBar';
-import { LeftSideBar, RightSideBar } from 'components/SideBar';
-import TopBar from 'components/TopBar';
+import NavBar from './NavBar';
+import { LeftSideBar, RightSideBar } from './SideBar';
 import SkinToolbox from 'components/SkinToolbox';
 import pathToRegexp from 'path-to-regexp';
 import { enquireIsMobile } from '@/utils/enquireScreen';
@@ -161,15 +160,6 @@ export default class BasicLayout extends React.PureComponent {
   };
 
   /**
-   * 切换左边栏中头部的开合
-   */
-  toggleSidebarHeader = _ => {
-    this.setState({
-      showSidebarHeader: !this.state.showSidebarHeader
-    });
-  };
-
-  /**
    * 切换右边栏
    */
   toggleRightSide = _ => {
@@ -219,7 +209,6 @@ export default class BasicLayout extends React.PureComponent {
             collapsed={collapsedLeftSide}
             onCollapseLeftSide={this.onCollapseLeftSide}
             onExpandTopBar={this.onExpandTopBar}
-            toggleSidebarHeader={this.toggleSidebarHeader}
             theme={theme.navbar}
             user={user}
             isMobile={isMobile}

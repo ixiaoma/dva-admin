@@ -26,7 +26,8 @@ export default {
 
     // 每次请求头部都会带着这些参数
     withHeaders: () => ({
-      token: store.getStore("token"),
+      Authorization: "Bearer 66b86691-a2a9-42d1-972c-782235550dc9"
+      // token: store.getStore("token"),
     }),
 
     /**
@@ -38,9 +39,12 @@ export default {
      * 成功失败标识来进行区分
      */
     afterResponse: response => {
-      const { status, message } = response;
-      if (status) {
-        return response;
+      const { retCode, message,data,status } = response;
+      if(status){
+        return response
+      }else if (retCode == 200) {
+        console.log(data)
+        return data;
       } else {
         throw new Error(message);
       }
@@ -95,6 +99,17 @@ export default {
         total: totalResult,
         totalPages: totalPage,
         list: dataList
+      };
+    },
+    // 格式化从后端反回的数据
+    resFormat: resp => {
+      const {
+        records,
+        count
+      } = resp;
+      return {
+        total: count,
+        list: records
       };
     }
   },

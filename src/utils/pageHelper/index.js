@@ -45,4 +45,8 @@ export default class　PageHelper {
   static responseFormat(resp) {
     return config.pageHelper.responseFormat(resp);
   }
+
+  static resFormat(pageInfo) {
+    return config.pageHelper.resFormat(pageInfo);
+  };
 }
