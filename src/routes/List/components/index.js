@@ -75,7 +75,9 @@ export default class List extends Component{
   onSubmit = (value)=>{
     console.log(value)
   };
-
+  tableChange = (data)=>{
+    console.log(data)
+  }
   render(){
 
     const { list,loading } = this.props
@@ -86,7 +88,8 @@ export default class List extends Component{
       columns,
       rowKey: 'id',
       dataItems: pageData,
-      showNum: true
+      onchange:(data)=>{this.tableChange(data)}
+      // showNum: true
     }
     
     return(

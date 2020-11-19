@@ -36,7 +36,7 @@ class LeftSideBar extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      openKeys: props.currentMenu ? props.currentMenu.parentPath : []
+      openKeys: [] //props.currentMenu ? props.currentMenu.parentPath : []
     };
   }
 
@@ -158,8 +158,7 @@ class LeftSideBar extends PureComponent {
 
   handleOpenChange = openKeys => {
     const lastOpenKey = openKeys[openKeys.length - 1];
-    const moreThanOne =
-      openKeys.filter(openKey => this.isMainMenu(openKey)).length > 1;
+    const moreThanOne = openKeys.filter(openKey => this.isMainMenu(openKey)).length > 1;
     this.setState({
       openKeys: moreThanOne ? [lastOpenKey] : [...openKeys]
     });

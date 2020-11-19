@@ -26,8 +26,8 @@ export default {
 
     // 每次请求头部都会带着这些参数
     withHeaders: () => ({
-      Authorization: "Bearer 66b86691-a2a9-42d1-972c-782235550dc9"
-      // token: store.getStore("token"),
+      Authorization: "Bearer 66b86691-a2a9-42d1-972c-782235550dc9",
+      token: store.getStore("token"),
     }),
 
     /**

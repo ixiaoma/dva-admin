@@ -35,7 +35,6 @@ export default {
           });
         }
       } catch (e) {
-        console.log(e)
         yield put({
           type: 'loginError',
           payload: { message: e.message }

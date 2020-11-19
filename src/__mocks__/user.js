@@ -205,7 +205,12 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
       {
         name: '列表',
         icon: 'DashboardOutlined',
-        path: '/list',
+        path: '/list'
+      },
+      {
+        name:'静态操作',
+        icon: '',
+        path: '/static'
       }
     ], 400)
   } 
