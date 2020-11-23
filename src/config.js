@@ -26,7 +26,7 @@ export default {
 
     // 每次请求头部都会带着这些参数
     withHeaders: () => ({
-      Authorization: "Bearer 66b86691-a2a9-42d1-972c-782235550dc9",
+      Authorization: "Bearer 78fa96af-0f27-42bd-9a7b-06bc9baef7bc",
       token: store.getStore("token"),
     }),
 
@@ -43,7 +43,6 @@ export default {
       if(status){
         return response
       }else if (retCode == 200) {
-        console.log(data)
         return data;
       } else {
         throw new Error(message);

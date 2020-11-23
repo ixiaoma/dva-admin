@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CheckOutlined, ReloadOutlined } from '@ant-design/icons';
-import { Form } from '@ant-design/compatible';
+import { Form } from 'antd';
 import '@ant-design/compatible/assets/index.css';
 import { Row, Col, Button, Divider } from 'antd';
 import cx from 'classnames';
@@ -11,7 +11,7 @@ import omit from 'object.omit';
 import Password from './model/password';
 import './style/index.less';
 
-const createForm = Form.create;
+// const createForm = Form.create;
 
 const PlainComp = ({ className, children }) => (
   <div className={className}>{children}</div>
@@ -24,7 +24,7 @@ PlainComp.propTypes = {
 /**
  * 表单组件
  */
-class FormComp extends React.Component {
+export default class FormComp extends React.Component {
   static propTypes = {
     prefixCls: PropTypes.string,
     className: PropTypes.string,
@@ -329,4 +329,4 @@ class FormComp extends React.Component {
 
 export const Item = Form.Item;
 
-export default createForm()(FormComp);
+// export default createForm()(FormComp);

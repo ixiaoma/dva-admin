@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Card, Button } from 'antd';
 import Icon from 'components/Icon';
 import DataTable from 'components/DataTable';
-import Form from 'components/Form'
+// import Form from 'components/Form'
 
 const columns = [
   {
@@ -65,7 +65,7 @@ const columns = [
 export default class List extends Component{
   componentDidMount(){
     const { dispatch } = this.props
-    const params = {"take":20,"skip":0,"page":1,"pageSize":20,"searchFilter":{"filters":[],"logic":"and"},"objectType":"61","conditionId":""}
+    const params = {"take":10,"skip":0,"page":1,"pageSize":10,"searchFilter":{"filters":[],"logic":"and"},"objectType":"61","conditionId":""}
     dispatch({
       type:'list/getListData',
       payload:params
@@ -75,9 +75,11 @@ export default class List extends Component{
   onSubmit = (value)=>{
     console.log(value)
   };
+
   tableChange = (data)=>{
     console.log(data)
   }
+
   render(){
 
     const { list,loading } = this.props
@@ -88,14 +90,14 @@ export default class List extends Component{
       columns,
       rowKey: 'id',
       dataItems: pageData,
-      onchange:(data)=>{this.tableChange(data)}
+      onChange:(data)=>{this.tableChange(data)}
       // showNum: true
     }
     
     return(
       <Card size="small">
-        <Form type="inline" columns={columns} onSubmit={this.onSubmit} />
-        <DataTable { ...dataTableProps }/>
+        {/* <Form type="inline" columns={columns} onSubmit={this.onSubmit} /> */}
+        <DataTable pagination { ...dataTableProps }/>
        </Card>
     )
   }

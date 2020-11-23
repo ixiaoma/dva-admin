@@ -146,7 +146,7 @@ class StaticPage extends Component{
         <FilterForm/>
         <ModelCom visible={visible} closeModel={closeModel} onSubmit={onSubmit} formData={formData}/>
         <Button type="primary" onClick={showModel}>新增</Button>
-        <Table size="small" bordered columns={columns} dataSource={pageData} scroll={{x:'max-content'}}/>
+        <Table size="small" bordered columns={columns} dataSource={pageData} pagination={{pagesize:20,total:30,showTotal:total => `共 ${total} 条`}} scroll={{x:'max-content'}}/>
        </Card>
     )
   }

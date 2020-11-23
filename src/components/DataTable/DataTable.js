@@ -248,18 +248,7 @@ class DataTable extends Component {
     }
 
     // 分页
-    const paging = objectAssign(
-      {
-        total: dataItems.total,
-        pageSize: dataItems.pageSize,
-        showSizeChanger: true,
-        showQuickJumper: true,
-        showTotal: total => `共 ${total} 条`,
-        onShowSizeChange: this.onShowSizeChange
-      },
-      dataItems.pageNum && { current: dataItems.pageNum },
-      pagination
-    );
+    const paginationCom = {pagesize:10,total:dataItems.count,showTotal:total => `共 ${total} 条`}
 
     const _rowSelection = {
       type: selectType === 'radio' ? 'radio' : 'checkbox',
@@ -285,8 +274,8 @@ class DataTable extends Component {
           scroll={isScroll ? objectAssign({ x: '100%' }, isScroll) : {}}
           bodyStyle={{ overflowX: 'auto' }}
           columns={cols}
-          pagination={pagination ? paging : false}
-          dataSource={dataItems.list}
+          pagination={pagination ? paginationCom : false}
+          dataSource={dataItems.records}
           onChange={this.handleTableChange}
           rowKey={this._rowKey}
           {...otherProps}
@@ -314,15 +303,15 @@ export const Tip = prop => (
 );
 
 export const Paging = ({ dataItems, onChange, ...otherProps }) => {
-  const { total, pageSize, pageNum } = dataItems;
+  const { count, pageSize, pageNum } = dataItems;
   const paging = {
-    total: total,
+    count: count,
     pageSize: pageSize,
     current: pageNum,
     showSizeChanger: true,
     showQuickJumper: true,
-    showTotal: total => `共 ${total} 条`,
-    onShowSizeChange: (pageNum, pageSize) => onChange({ pageNum, pageSize }),
+    showTotal: count => `共 ${count} 条`,
+    // onShowSizeChange: (pageNum, pageSize) => onChange({ pageNum, pageSize }),
     onChange: pageNum => onChange({ pageNum }),
     ...otherProps
   };
