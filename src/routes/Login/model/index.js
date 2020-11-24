@@ -23,23 +23,24 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      try {
-        const { status, message, data } = yield call(login, payload);
-        if (status) {
-          $$.setStore('user', data);
-          yield put(routerRedux.replace('/'));
-        } else {
-          yield put({
-            type: 'loginError',
-            payload: { message }
-          });
-        }
-      } catch (e) {
-        yield put({
-          type: 'loginError',
-          payload: { message: e.message }
-        });
-      }
+      yield put(routerRedux.replace('/'));
+      // try {
+      //   const { status, message, data } = yield call(login, payload);
+      //   if (status) {
+      //     $$.setStore('user', data);
+      //     yield put(routerRedux.replace('/'));
+      //   } else {
+      //     yield put({
+      //       type: 'loginError',
+      //       payload: { message }
+      //     });
+      //   }
+      // } catch (e) {
+      //   yield put({
+      //     type: 'loginError',
+      //     payload: { message: e.message }
+      //   });
+      // }
     },
     *logout(_, { put }) { }
   },
