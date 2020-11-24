@@ -203,6 +203,17 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
         ],
       },
       {
+        name: '系统管理',
+        icon: 'BulbOutlined',
+        path: '/systemManage',
+        children: [
+          {
+            name: '菜单管理',
+            path: '/menu',
+          }
+        ],
+      },
+      {
         name: '列表',
         icon: 'DashboardOutlined',
         path: '/list'

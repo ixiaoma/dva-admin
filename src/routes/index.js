@@ -36,6 +36,7 @@ import CRUDDetail from './Business/CRUD/routers/Detail';
 import Image from './UI/Image';
 import List from './List'
 import StaticPage from './StaticPage'
+import Menu from './SystemManage/Menu'
 
 /**
  * 主路由配置
@@ -46,7 +47,9 @@ import StaticPage from './StaticPage'
  * childRoutes 所有子路由
  * NotFound 路由要放到最下面，当所有路由当没匹配到时会进入这个页面
  */
-const routesConfig = app => [
+const routesConfig = app => {
+  console.log(Dashboard(app),Icon())
+  return [
   {
     path: '/sign',
     title: '登录',
@@ -96,9 +99,11 @@ const routesConfig = app => [
       Image(),
       List(app),
       StaticPage(app),
+      Menu(app),
       NotFound()
     ]
   }
 ];
+}
 
 export default app => createRoutes(app, routesConfig);

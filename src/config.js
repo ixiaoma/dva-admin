@@ -22,11 +22,11 @@ export default {
 
   // 异步请求配置
   request: {
-    prefix: '/api',
+    prefix: '',
 
     // 每次请求头部都会带着这些参数
     withHeaders: () => ({
-      Authorization: "Bearer 78fa96af-0f27-42bd-9a7b-06bc9baef7bc",
+      Authorization: "Bearer d544c820-25b6-4202-a950-7ae778211dc7",
       token: store.getStore("token"),
     }),
 
@@ -39,14 +39,15 @@ export default {
      * 成功失败标识来进行区分
      */
     afterResponse: response => {
-      const { retCode, message,data,status } = response;
-      if(status){
-        return response
-      }else if (retCode == 200) {
-        return data;
-      } else {
-        throw new Error(message);
-      }
+      return response
+      // const { retCode, message,data,status } = response;
+      // if(status){
+      //   return response
+      // }else if (retCode == 200) {
+      //   return data;
+      // } else {
+      //   throw new Error(message);
+      // }
     },
     errorHandle: err => {
       // 请求错误全局拦截

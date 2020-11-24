@@ -92,6 +92,6 @@ toSuccess(mock({
 fetchMock可以拦截请求，使用模拟数据代替真实接口数据，框架本身已装包装好了fetchMock的实现，如果现有封装不满足，可以自行扩展，[FetchMock官网](http://www.wheresrhys.co.uk/fetch-mock/api)，一般不需要扩展。
 
 
-## 对接直实接口
+## 对接实真接口
 当后端提供给我们真实接口的时候，我们需要替换我们的模拟接口，这里我只是简单的把模拟接口进行注释掉，或在`__mocks__/index.js`中注释掉这个文件，希望大家提供一个更好的方式。
 

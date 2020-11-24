@@ -5,17 +5,17 @@ const proxy = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
-    proxy('/api/sub', {
-      target: 'http://localhost:8080',
+    proxy('/auth', {
+      target: 'http://10.122.42.161:31001',
       changeOrigin: true,
       pathRewrite: {
-        '^/api': ''
+        '^/auth': '/auth'
       }
     })
   );
   // app.use(
-  //   proxy('/api', {
-  //     target: 'http://aaa:1000',
+  //   proxy('/api/sub', {
+  //     target: 'http://localhost:8080',
   //     changeOrigin: true,
   //     pathRewrite: {
   //       '^/api': ''

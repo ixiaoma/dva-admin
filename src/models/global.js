@@ -11,8 +11,36 @@ export default modelEnhance({
 
   effects: {
     *getMenu({ payload }, { call, put }) {
-      const { status, data } = yield call(getMenu, payload);
-      if (status) {
+      // const { status, data } = yield call(getMenu, payload);
+      // if (status) {
+        const data = [
+          {
+            name: '仪表盘',
+            icon: 'DashboardOutlined',
+            path: '/dashboard',
+          },
+          {
+            name: '系统管理',
+            icon: 'BulbOutlined',
+            path: '/systemManage',
+            children: [
+              {
+                name: '菜单管理',
+                path: '/menu',
+              }
+            ],
+          },
+          {
+            name: '列表',
+            icon: 'DashboardOutlined',
+            path: '/list'
+          },
+          {
+            name:'静态操作',
+            icon: '',
+            path: '/static'
+          }
+        ]
         const loopMenu = (menu, pitem = {}) => {
           menu.forEach(item => {
             if (pitem.path) {
@@ -24,13 +52,12 @@ export default modelEnhance({
           });
         }
         loopMenu(data);
-        
         yield put({
           type: 'getMenuSuccess',
           payload: data,
         });
       }
-    },
+    // },
   },
 
   reducers: {
